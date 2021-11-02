@@ -14,3 +14,6 @@ La logica de la calculadora se hace en la funcion compute con un switch. Tiene u
      .
      
      
+     Si quieres probarla solamente tienes que hacer clic en el enlace de abajo:
+     [Link Preview](https://rawcdn.githack.com/megarbon/calculadora/9d9f3a3f4da3de227f7f4a269ec049cd46ddfc56/index.html)
+     
