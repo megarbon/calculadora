@@ -1,55 +1,19 @@
-// Declaramos variables
+// Declaraciones
 var operandoa, operandob, operacion;
-var resultado = obtenerElemento("resultado");
-var reset = obtenerElemento("reset");
+var resultado = 0;
+var numeroActual = "";
 
-// Función para obtener elemento por ID
-function obtenerElemento(id) {
-return document.getElementById(id);
-}
+// Funciones Declarativas
+const clicEnNumero = numero => numeroActual += numero;
+const realizarOperacion = op => (operandoa = parseFloat(numeroActual), operacion = op, numeroActual = "");
+const resolver = () => (operandob = parseFloat(numeroActual), resultado = eval(`${operandoa} ${operacion} ${operandob}`), numeroActual = resultado.toString());
+const limpiar = () => numeroActual = "";
+const resetear = () => (limpiar(), operandoa = operandob = resultado = 0, operacion = "");
 
-// Función para manejar clic en los números
-function clicEnNumero(numero) {
-resultado.textContent += numero;
-}
-
-// Función para realizar operaciones
-function realizarOperacion(op) {
-operandoa = resultado.textContent;
-operacion = op;
-limpiar();
-}
-
-// Función para limpiar el resultado
-function limpiar() {
-resultado.textContent = "";
-}
-
-// Función para resetear variables
-function resetear() {
-limpiar();
-operandoa = 0;
-operandob = 0;
-operacion = "";
-}
-
-// Función para resolver la operación
-function resolver() {
-operandob = resultado.textContent;
-resultado.textContent = eval(operandoa + operacion + operandob);
-resetear();
-}
-
-// Eventos de clic
-for (let i = 0; i <= 9; i++) {
-obtenerElemento(i.toString()).onclick = function () {
-clicEnNumero(i);
-};
-}
-
-reset.onclick = resetear;
-suma.onclick = function () { realizarOperacion("+"); };
-resta.onclick = function () { realizarOperacion("-"); };
-multiplicacion.onclick = function () { realizarOperacion("\*"); };
-division.onclick = function () { realizarOperacion("/"); };
-igual.onclick = resolver;
+// Ejemplo de uso
+clicEnNumero("1");
+clicEnNumero("2");
+realizarOperacion("+");
+clicEnNumero("3");
+resolver();
+// Resultado: 15
